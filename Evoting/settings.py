@@ -25,7 +25,7 @@ SECRET_KEY = '_$#gn1)ae+)28=df5#!hepmb71p)d56p7h*kc8(2_9z#0bs@2m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ogtan.herokuapp.com']
+ALLOWED_HOSTS = ['ogtan.herokuapp.com','127.0.0.1']
 
 
 # Application definition
