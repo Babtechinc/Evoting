@@ -1,0 +1,52 @@
+{%  extends 'Base.html' %}
+{% block content %}
+
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Add Party Form</h4>
+                                <div class="basic-form">
+                                    <form method="post" action="{% url 'AddParty' %}">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                               <select id=""  name="state" class="form-control">
+                                           <option value="null" >Pick your CANDIDATES</option>
+                                            {% for foo in stateLCG %}
+
+                                                <option value="{{ foo }}">{{ foo }}</option>
+
+                                               {% endfor %}
+                                        </select>  </div>
+                                            <div class="form-group col-md-6">
+                                               <select id=""  name="state" class="form-control">
+                                           <option value="null" >Pick your CANDIDATES Position</option>
+                                            {% for foo in stateLCG %}
+
+                                                <option value="{{ foo }}">{{ foo }}</option>
+
+                                               {% endfor %}
+                                        </select>   </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>Email</label>
+                                                <input type="date" for name="Email" class="form-control" placeholder="Email">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>Password</label>
+                                                <input type="password" class="form-control" placeholder="Password">
+                                            </div>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-block  btn-primary">Sign in</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+{% endblock %}

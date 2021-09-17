@@ -1,0 +1,89 @@
+{%  extends 'Base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+<div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="text-uppercase pull-left f-w-500 m-b-0">Election Monitoring</h6>
+                                <h6 class="pull-right">Election 2020</h6>
+                                <div class="clearfix"></div>
+      <div class="m-t-15">
+                                    <h5 class="m-b-0">Online Poll</h5>
+
+                                </div>
+
+                                 {% for soo,foo in Resultdict.items %}
+                                     <div class="row">
+                                    <div class="col-3 m-t-20 m-b-0">
+                                        <h6 style="color: black;font-weight: bolder" >{{ soo}}({{ foo.count }})</h6>
+                                    </div>
+                                    <div class="col-9">
+                                        <div class="progress m-t-20 h-15px">
+                                            <div role="progressbar" class="progress-bar bg-primary h-15px w-{{foo.userCount }}pc" >{{foo.userCount }}%</div>
+                                        </div>
+                                    </div>
+                                </div>{% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                 <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Donut Vote Chart</h4>
+                                <div id="morris-donut-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Visit Vote Chart</h4>
+                                <div id="morris-area-chart0"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Area Vote Chart</h4>
+                                <div id="extra-area-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Line Vote Chart</h4>
+                                <div id="morris-line-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Line Chart</h4>
+                                <div id="morris-area-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Bar Chart</h4>
+                                <div id="morris-bar-chart"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{% endblock %}

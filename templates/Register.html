@@ -1,0 +1,198 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="h-100" id="login-page1">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ule - Bootstrap Admin Dashboard HTML Template</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}">
+    <link href="{% static 'plugins/shortcode/shortcode.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/animate/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/bootstrap-tagsinput/bootstrap-tagsinput.css"' %}" rel="stylesheet">
+    <link href="{% static 'plugins/metismenu/css/metisMenu.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'plugins/select2/select2.min.css' %}" rel="stylesheet">
+    <script src="{% static 'js/modernizr-3.6.0.min.js' %}"></script>
+</head>
+
+<body class="h-100">
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10"/></svg>
+        </div>
+    </div>
+    <div class="login-bg h-100">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100">
+                <div class="col-xl-6">
+                    <div class="form-input-content">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="logo text-center">
+                                    <a href="index.html">
+                                        <img src="../../assets/images/f-logo.png" alt="">
+                                    </a>
+                                </div>
+                                <h4 class="text-center m-t-15">Log into Your Account</h4>
+                                <form class="m-t-30 m-b-30 " action="{% url 'Register' %}" METHOD="post" >
+                                    {% csrf_token %}
+                                    <Div id="msg"></Div>
+                                    <div id="show-1">
+                                    <div class="form-group">
+                                        <label>Voter ID</label>
+                                        <input type="text" class="form-control" name="VoterID" id="VoterID" required placeholder="VoterID">
+                                    </div>
+                                           <div class="form-group">
+                                        <label>NIN</label>
+                                        <input type="text" class="form-control" name="NIN" id="NIN" placeholder="NIN">
+                                    </div>
+                                        <div class="form-group">
+                                        <label>Date issued</label>
+
+
+                                        <input type="date" class="form-control" name="DateIssued" id="DateIssued" placeholder="2017-06-04"  data-dtp="dtp_DNsKP">
+
+                                    </div>    <div class="form-group">
+                                        <label>State</label>
+
+
+                                        <select id="pickState" onchange="lookFor()" name="state" class="form-control">
+                                           <option value="null" >Pick your State</option>
+                                            {% for foo in stateLCG %}
+
+                                                <option value="{{ foo }}">{{ foo }}</option>
+
+                                               {% endfor %}
+                                        </select>
+                                    </div><div class="form-group">
+                                        <label>Local Government</label>
+
+
+                                        <select id="pick" name="LocalGovernment" class="form-control">
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="Password" id="Password" class="form-control" placeholder="Password">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>Confirmed Password</label>
+                                        <input type="password" class="form-control" name="ConfirmedPassword" id="ConfirmedPassword" placeholder="Re-Type Password">
+                                    </div>
+</div> <div style="display: none" id="show-2">
+
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" class="form-control" name="Fname" id="Fname" placeholder="First Name">
+                                    </div>   <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" class="form-control" name="Lname" id="Lname" placeholder="Last Name">
+                                    </div>   <div class="form-group">
+                                        <label>Middle Name</label>
+                                        <input type="text" class="form-control" name="Mname" id="Mname" placeholder="Middle  Name">
+                                    </div> <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name="Email" id="Email" placeholder="Email">
+                                    </div>
+                                      <div class="form-group">
+                                        <label>Date Of Birth</label>
+                                        <input type="date" class="form-control" name="DOB" id="DOB" placeholder="2017-06-04"  data-dtp="dtp_DNsKP">
+
+                                    </div>
+</div>
+                                    <div id="submitNext" class="text-center m-b-15 m-t-15">
+                                        <a onclick="moveNext()" class="btn btn-primary" style="color: white">Next</a>
+{#                                        <button type="submit" class="btn btn-primary">Sign in</button>#}
+                                    </div>
+                                </form>
+                                <div class="text-center">
+
+                                    <p class="m-t-30">Dont have an account? <a href="#">Login Now</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+    <!-- Common JS -->
+    <script src="{% static 'plugins/common/common.min.js' %}"></script>
+    <!-- Custom script -->
+    <script src="{% static 'js/custom.min.js' %}"></script>
+    <script src="{% static 'plugins/select2/select2-init.js' %}"></script>
+    <script src="{% static 'plugins/select2/select2.full.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-tagsinput/bootstrap-tagsinput-init.js' %}"></script>
+    <script src="{% static 'plugins/select2/select2-init.js' %}"></script>
+    <script src="{% static 'plugins/select2/select2.full.min.js' %}"></script>
+<script>
+   function moveNext(){
+
+        NIN =document.getElementById('NIN').value
+       VoterID =document.getElementById('VoterID').value
+        Confirmed =document.getElementById('ConfirmedPassword').value
+        Password =document.getElementById('Password').value
+        DateIssued =document.getElementById('DateIssued').value
+       if (NIN =='' || VoterID==''|| Confirmed=='' || Password=='' || DateIssued==''){
+            document.getElementById('msg').innerHTML ='<div class="alert alert-danger">Fill Up All Detail <b>Before moving to the Next Screen</b></div>'
+       }
+       else if(Password != Confirmed){
+            document.getElementById('msg').innerHTML ='<div class="alert alert-danger"> <b>Password does not Match</b></div>'
+       }
+       else {
+            document.getElementById('msg').innerHTML =''
+                  document.getElementById('show-1').style.display= 'none'
+       document.getElementById('show-2').style.display= 'block'
+           document.getElementById('submitNext').innerHTML = '<a onclick="moveBack()" class="btn btn-primary" style="color: white">Go Back</a><br><br>' +
+               '<button type="submit" class="btn btn-primary">Sign in</button>'
+       }
+
+    }
+       function moveBack(){
+        document.getElementById('show-2').style.display= 'none'
+       document.getElementById('show-1').style.display= 'block'
+       document.getElementById('submitNext').innerHTML =
+           '<a onclick="moveNext()" class="btn btn-primary" style="color: white">Next</a>'
+       console.log('fndn')
+    }
+ function lookFor() {
+     pickState=document.getElementById('pickState').value
+     console.log(pickState)
+     console.log('pickState')
+    $.ajax({
+        type:'GET',
+        url:'{% url 'selectState' %}',
+        data:{
+            ref:pickState
+        },
+        success:function(json){
+   document.getElementById('pick').innerHTML='<option value="null" >Pick your State</option>'
+
+            for (i=0;i<json.data.length;i++){
+               document.getElementById('pick').innerHTML += '<option value="'+json.data[i]+'">'+json.data[i]+'</option>'
+            }
+          document.querySelector("#msg").innerHTML = '<div class="alert alert-primary" role="alert">\n' +
+                '                                           Profile details updated.\n' +
+                '                                        </div>'
+
+        },
+        error : function(xhr,errmsg,err) {
+              document.querySelector("#msg").innerHTML = '<div class="alert alert-danger" role="alert">\n' +
+                '                                          \n' +
+                '                 <b>Error</b>                       </div>'
+    }
+  });
+ }
+</script>
+</body>
+
+</html>

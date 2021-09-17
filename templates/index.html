@@ -1,0 +1,120 @@
+{%  extends 'Base.html' %}
+{% block CSSblock %}
+
+{% endblock %}
+   {% block scriptblock %}
+
+{% endblock %}
+{% block content %}
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Download <span class="pull-right"><i class="ion-android-download f-s-30 text-primary"></i></span></h4>
+                                <h6 class="m-t-20 f-s-14">50% Complete</h6>
+                                <div class="progress m-t-0 h-7px">
+                                    <div role="progressbar" class="progress-bar bg-primary wow animated progress-animated w-50pc h-7px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Upload <span class="pull-right"><i class="ion-android-upload f-s-30 text-success"></i></span></h4>
+                                <h6 class="m-t-20 f-s-14">90% Complete</h6>
+                                <div class="progress m-t-0 h-7px">
+                                    <div role="progressbar" class="progress-bar bg-success wow animated progress-animated w-90pc h-7px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4>Ticket <span class="pull-right"><i class="ion-android-list f-s-30 text-danger"></i></span></h4>
+                                <h6 class="m-t-20 f-s-14">65% Ticket Checked</h6>
+                                <div class="progress m-t-0 h-7px">
+                                    <div role="progressbar" class="progress-bar bg-danger wow animated progress-animated w-65pc h-7px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class=" card-title">Poll Progress</h4>
+                                <div class="f-s-30 f-w-300 text-success">3500 <span class="f-s-16 text-uppercase">Vote</span>
+                                </div>
+                                <a href=" " class="btn btn-outline-dark btn-flat m-t-5 m-b-30 f-s-14">View Details</a>
+                                <canvas id="sales-graph-top"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Party</h4>
+                                {% for foo in PartyAll %}
+
+                          <div class="media border-bottom-1 p-t-15 p-b-15">
+                                    <img src="{{ foo.Logo.url }}" m="" class="mr-3 rounded-circle" style="max-width: 50px;height: auto; margin: auto" alt="">
+                                    <div class="media-body">
+                                        <h5>{{ foo.PartyName }}</h5>
+                                        <p class="m-b-0" >{{ foo.PartyEmail }}</p>
+                                    </div><span class="text-muted f-s-12" style="font-weight: bold">{{ foo.PartyAcronym }}</span>
+                                </div>
+                                 {% endfor %}
+                                <a href="">View all</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="active-member">
+                                    <div class="table-responsive">
+                                        <table class="table table-xs">
+                                            <thead>
+                                                <tr>
+                                                    <th>Position</th>
+                                                    <th>Status</th>
+                                                    <th>Vote</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for foo in Position %}
+                                                <tr>
+
+                                                   <td>{{ foo.Position }}</td>
+                                                    <td>{% if foo.Status == 'open' %}
+                                                    <span class="label label-pill label-success">{{ foo.Status }}</span>
+                                                        {% else %}
+                                                        <span class="label label-pill label-danger">{{ foo.Status }}</span>
+                                                    {% endif %} </td>
+                                                    <td>{% if foo.Status == 'open' %}
+                                                   <a  style="color:black" class="btn btn-outline-primary">VOTE</a>
+                                                        {% else %}
+                                                      This election {{ foo.Status }}
+                                                    {% endif %}
+                                                       </td>
+
+                                                </tr>
+{% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+{% endblock %}

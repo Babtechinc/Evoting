@@ -1,0 +1,65 @@
+{%  extends 'Base.html' %}
+{% block content %}
+
+
+            <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Position & CANDIDATES</h4>
+                                <div class="basic-form">
+                                    <form action="{% url 'PickCandidates' %}" enctype="multipart/form-data" method="post">
+{% csrf_token %}
+                                            `{% include 'partial/_message.html' %}
+                                            <div class="form-group">
+                                                <label>Pick Position</label>
+
+
+                                                <select class="form-control" name="Position" >
+                                                   <option value="" >Select Position </option>
+                                                     {% for foo in Position %}
+                                                <option value="{{ foo.id }}" >{{ foo.Position }}</option>
+                                                {% endfor %}
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Pick Candidate</label>
+
+
+                                                <select class="form-control" name="Candidate">
+                                                   <option value="" >Select Candidate </option>
+                                                     {% for foo in UserAccountDB %}
+                                                <option value="{{ foo.id }}" >{{ foo.Lastname }} {{ foo.Firstname }}({{ foo.NIN }})</option>
+                                                {% endfor %}
+
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Pick Year</label>
+
+
+                                                <select class="form-control" name="year">
+                                                   <option value="2021" >2021 </option>
+
+
+                                                </select>
+                                            </div>
+<div class="form-group">
+                                                <label>Upload Manifesto</label>
+
+
+                                              <input type="file" class="form-control" name="Manifesto" required>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-dark m-t-20">Submit</button>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+{% endblock %}
