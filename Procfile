@@ -1,1 +1,1 @@
-web: gunicorn ogtanProject.wsgi --log-file -
+web: gunicorn Evoting.wsgi --log-file -
