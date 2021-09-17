@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Evoting.urls'
@@ -133,7 +134,7 @@ MESSAGE_TAGS = {
 STATIC_URL = '/static/'
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 
 STATICFILES_DIRS = (
 os.path.join(BASE_DIR, 'static'),
