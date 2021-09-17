@@ -20,7 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-        path('',views.dashboard ,name='Dash'),
+    path('home',views.dashboard ,name='Dash'),
     path('Account/',include('Account.urls')),
-    path('Election/',include('Election.urls'))
+    path('Election/',include('Election.urls')),
+    path('', include('pwa.urls'))
+
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
